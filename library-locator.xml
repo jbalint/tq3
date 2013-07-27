@@ -1,0 +1,30 @@
+<!--
+
+Copy the code below into the Ant build.xml to setup the properties
+for the machine you are using. The properties file defines all the
+library locations.
+
+	<import file="../library-locator.xml"/>
+
+-->
+
+<project>
+	<!-- try to detect the OS and host we are using -->
+	<condition property="buildOs" value="windows">
+		<os family="windows"/>
+	</condition>
+
+	<condition property="buildOs" value="unix">
+		<os family="unix"/>
+	</condition>
+
+	<property environment="env"/>
+	<property name="env.HOST" value="${env.HOSTNAME}"/>
+	<property name="env.HOST" value="${env.COMPUTERNAME}"/>
+	<property name="propertyFile"
+		value="build.properties-${buildOs}-${env.HOST}"/>
+	<echo message="Using property file ${propertyFile}"/>
+	<property file="../../personal_svn/test/${propertyFile}"/>
+	<!-- ************************ -->
+</project>
+

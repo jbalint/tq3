@@ -1,0 +1,8 @@
+TODO add option to 'skip task today' that wont display today
+TODO display closed tasks in their respective categories (not today) - and make button to open/close or use the checkbox and add a save button
+TODO add some kind of priority?
+TODO add close date
+TODO add daily note per task?
+
+display percentage done in last 7/14/30 days? this query:
+select task.id, name, coalesce(sum(if(datediff(now(),entry_date)<=7,1,0)), 0)/(7/days_between) as d7, coalesce(count(entry_date), 0)/(30/days_between) as d30 from task left join task_entry on task_entry.task_id = task.id and entry_date >= date(date_sub(now(), interval 30 day)) where task.open = 1 group by 1,2 order by 2;
