@@ -1,10 +1,9 @@
 <project name="tq3" basedir="." default="run">
-	<import file="library-locator.xml"/>
 	<path id="cp">
 		<pathelement path="."/>
-		<fileset dir="${dir.jgoodies}"><include name="**/*.jar"/></fileset> 
-		<fileset dir="${dir.jdbc-drivers}"><include name="**/*.jar"/></fileset> 
-		<fileset dir="${dir.jcalendar}"><include name="**/*.jar"/></fileset> 
+		<fileset dir="/home/jbalint/Dropbox/Apps/jarbox/jgoodies"><include name="**/*.jar"/></fileset> 
+		<fileset dir="/home/jbalint/Dropbox/Apps/jarbox/mysql-connector-java"><include name="**/*.jar"/></fileset> 
+		<fileset dir="/home/jbalint/Dropbox/Apps/jarbox/jcalendar"><include name="**/*.jar"/></fileset> 
 	</path>
 	<target name="run">
 		<javac srcdir="." destdir="." debug="true" classpathref="cp">
